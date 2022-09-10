@@ -33,7 +33,7 @@ def add_images_to_gallery(new_images):
     content_page_fpath = Path(WEB_ROOT) / 'images.md'
     #with open(content_page_fpath, 'a') as f: 
     # this is also temporary
-    #with open(content_page_fpath, 'w') as f: 
+    with open(content_page_fpath, 'w') as f: 
         f.write('  \n'.join(entries))
 
 def update_gallery():
