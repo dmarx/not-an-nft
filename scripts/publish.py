@@ -30,7 +30,7 @@ def add_images_to_gallery(new_images):
         f.write('  \n'.join(entries))
 
 def update_gallery():
-    img_paths = get_new_images(img_paths)
+    img_paths = get_new_images()
     add_images_to_gallery(img_paths)
     
 if __name__ == '__main__':
