@@ -27,7 +27,7 @@ def impath2entry(im):
 def add_images_to_gallery(new_images):
     entries = [impath2entry(im) for im in new_images]
     with open(content_page_fpath, 'a') as f:
-        f.write('  \n'.join(entries)
+        f.write('  \n'.join(entries))
 
 def update_gallery():
     img_paths = get_new_images(img_paths)
