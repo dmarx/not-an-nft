@@ -1,13 +1,36 @@
 from pathlib import Path
 
-def get_new_images():
-    pass
+CONTENT_ROOT = 'content'
+WEB_ROOT = 'gallery'
 
-def add_images_to_gallery(img_paths):
-    pass
-  
+def get_images():
+    return list(Path(CONTENT_ROOT).glob('*.png'))
+
+def get_new_images():
+    content_page_fpath = Path(WEB_ROOT) / 'images.md'
+    images = get_images()
+    new_imgs = []
+    if not content_page_fpath.exists():
+        new_imgs = images
+    else:
+        with open(content_page_fpath, 'r') as f:
+            page = f.read()
+        for im in images:
+            if not str(im) in page:
+                new_imgs.append(im)
+    return new_imgs
+    
+def impath2entry(im):
+    return f"![]({im})"
+
+
+def add_images_to_gallery(new_images)
+    entries = [impath2entry(im) for im in new_images]
+    with open(content_page_fpath, 'a') as f:
+        f.write('  \n'.join(entries)
+
 def update_gallery():
-    img_paths = get_new_images()
+    img_paths = get_new_images(img_paths)
     add_images_to_gallery(img_paths)
     
 if __name__ == '__main__':
