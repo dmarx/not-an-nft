@@ -29,12 +29,12 @@ def add_images_to_gallery(new_images):
     # this is just temporary
     new_images = get_images()
     ###
-    entries = [impath2entry(im) for im in new_images]
+    entries = ["# Images\n\n"] + [impath2entry(im) for im in new_images]
     content_page_fpath = Path(WEB_ROOT) / 'images.md'
     #with open(content_page_fpath, 'a') as f: 
     # this is also temporary
-    with open(content_page_fpath, 'w') as f: 
-        f.write('  \n'.join(entries))
+    with open(content_page_fpath, 'w') as f:
+        f.write('  \n'.join(entries[1:]))
 
 def update_gallery():
     img_paths = get_new_images()
