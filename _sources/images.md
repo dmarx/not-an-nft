@@ -1,1 +1,3 @@
-![](content/mermaid.png)
+# title
+
+![](../content/mermaid.png)
