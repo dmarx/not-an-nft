@@ -24,7 +24,7 @@ def impath2entry(im):
     return f"![]({im})"
 
 
-def add_images_to_gallery(new_images)
+def add_images_to_gallery(new_images):
     entries = [impath2entry(im) for im in new_images]
     with open(content_page_fpath, 'a') as f:
         f.write('  \n'.join(entries)
