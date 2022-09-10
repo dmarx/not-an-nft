@@ -21,7 +21,7 @@ def get_new_images():
     return new_imgs
     
 def impath2entry(im):
-    return f"![]({im})"
+    return f"![](../{im})"
 
 
 def add_images_to_gallery(new_images):
