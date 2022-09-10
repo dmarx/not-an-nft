@@ -4,7 +4,8 @@ CONTENT_ROOT = 'content'
 WEB_ROOT = 'gallery'
 
 def get_images():
-    return list(Path(CONTENT_ROOT).glob('**/*.png'))
+    #return list(Path(CONTENT_ROOT).glob('**/*.png'))
+    return list(Path(CONTENT_ROOT).rglob('*.png'))
 
 def get_new_images():
     content_page_fpath = Path(WEB_ROOT) / 'images.md'
