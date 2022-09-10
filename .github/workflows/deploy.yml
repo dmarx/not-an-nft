@@ -6,8 +6,34 @@ on:
     branches:
       - main
 
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
+
+  # this job runs the publish script which identifies newly added images and adds
+  # them as content to the jupyter book
+  update_content:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # https://stackoverflow.com/questions/60868897/git-log-dates-incorrect-in-a-github-action
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+      - uses: actions/setup-python@v2
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: python scripts/update_readme.py
+      - name: Commit files
+        run: |
+          git config --local user.name "dmarx"
+          git add README.md
+          git commit -m "Updated TOC"
+      - name: Push changes # push the output folder to your repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
+          
+  # This job installs dependencies, build the book, and pushes it to `gh-pages`
   build-and-deploy-book:
     runs-on: ${{ matrix.os }}
     strategy:
