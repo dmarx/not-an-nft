@@ -26,6 +26,7 @@ def impath2entry(im):
 
 def add_images_to_gallery(new_images):
     entries = [impath2entry(im) for im in new_images]
+    content_page_fpath = Path(WEB_ROOT) / 'images.md'
     with open(content_page_fpath, 'a') as f:
         f.write('  \n'.join(entries))
 
