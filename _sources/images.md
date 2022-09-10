@@ -1,3 +1,3 @@
-# title
+# Images
 
 ![](../content/mermaid.png)
